@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %} mob-reg {% endblock title %}
+
+{% block content %}
+<div class="flex md:flex-row flex-col items-center justify-evenly mt-10">
+    <div class="p-2">
+        <!-- form -->
+        <form action="" method="post">
+            {% csrf_token %}
+            <div>
+                <p><label>{{form.mob.label}}.</label></p>
+                {{form.mob}}
+            </div>
+
+
+            <div class="mt-2">
+            <button class="md:w-1/2 w-full bg-red-700 px-4 py-2  hover:shadow hover:shadow-gray-500/90 text-white rounded-full" type="submit">Enroll</button>
+            </div>
+        </form>
+    </div>
+    <!-- content -->
+    <div class="md:w-1/2 mt-2 text-center p-2 md:text-left">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur adipisci tempora autem atque magni tempore non, quis totam praesentium, omnis impedit sequi, suscipit mollitia! Repudiandae voluptatibus quae us praesentium! Laboriosam, nisi officiis ratione minus quae culpa quos tempore earum aliquid. Natus, quam. Officia, sapiente minima! Nisi, officiis, voluptate itaque incidunt beatae alias molestias cupiditate tenetur sequi assumenda pariatur quam necessitatibus obcaecati voluptatum! Rerum ut vitae qui blanditiis consequatur similique incidunt quis, amet explicabo nihil facere inventore optio cupiditate nostrum autem, animi eum debitis sit at fugiat! Incidunt modi sapiente et inventore impedit!</p>
+        <button class=" mt-2 bg-white-700 px-4 py-2 rounded shadow shadow-gray-500/90 text-green-700 hover:bg-gradient-to-r via-slate-500/30  from-green-400 duration-300  text-1xl" type="submit">Explore</button>
+
+
+    </div>
+
+</div>
+
+{% endblock content %}

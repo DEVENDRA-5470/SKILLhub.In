@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %} home{% endblock title %}
+{% load static %}
+{% block content %}
+{% for blogs in page_obj %}
+<div class="flex items-center flex-col justify-evenly ml-2 m-5 mt-10  md:flex-row">
+    <div class=" object-contain md:w-1/2 p-2 w-full hover:shadow-2xl duration-300">
+       <img class=" " src="{{blogs.course_img.url}}" alt=""> 
+    </div>
+
+    <div class="w-full ml-5 mt-5">
+      
+            <h1 class="text-2xl font-medium w-full text-purple-500 underline capitalize"><a href="{% url 'detail' blogs.id %}">{{blogs.course_name}}</a> </h1>
+            
+     
+        <p class="">{{blogs.course_des | truncatewords:80}}<button><a class="text-blue-500 hover:text-blue-600 underline" href="{% url 'detail' blogs.id %}">Explore Now</a></button> </p>
+        <h1>Duration {{blogs.course_duration}} Months</h1>
+        <h1>Price {{blogs.course_price}}/-</h1>
+    </div>
+</div>
+{% endfor %}
+<div class="flex justify-center items-center mt-28">
+    <span >{% if page_obj.has_previous %}</span>
+    <a href="?page={{page_obj.previous_page_number}}" class="inline-flex items-center px-4 py-2 mr-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 hover:border-blue-700">
+        <svg aria-hidden="true" class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
+        Previous
+      </a>
+    {% endif %}
+
+        <span class=" text-blue-700  p-0.5  ml-1">Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
+
+    <span>{% if page_obj.has_next %}</span>
+    <a href="?page={{page_obj.next_page_number}}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 hover:border-blue-700">
+        Next
+        <svg aria-hidden="true" class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+      </a>
+    {% endif %}
+    
+<!-- Previous Button -->
+
+</div>
+
+ 
+{% endblock content %}

@@ -1,0 +1,58 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <title>Course blog |{% block title %}{% endblock title %}</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+	</head>
+	<style>
+		::-webkit-scrollbar{
+			display: none;
+		}
+		
+	</style>
+	<body class="bg-gray-50 font-serif leading-normal tracking-normal   ">
+		<nav class=" bg-blue-500 flex justify-around items-center text-xl shadow shadow-slate-600 p-2 md:sticky top-0 sm:sticky ">
+			<!-- button menu -->
+			<span class="text-white text-3xl cursor-pointer  md:hidden block ">
+				<ion-icon name="menu-outline" id="menu" ></ion-icon>
+			</span>
+			<!-- logo and img -->
+			<div class="flex items-center p-1 text-white ">
+				<h1 class="text-2xl font-semibold">SkillHub.IN</h1>
+				<!-- <img class="ml-2" src="{% get_static_prefix %}images\blog.webp" width="40px" alt="photo"> -->
+			</div>
+
+			<!-- menus  -->
+			<div class="">
+				<ul id="menubar" class=" z-[1] md:text-white md:bg-none   mt-5 md:mt-0 pt-2 md:pt-0 md:flex md:static absolute left-[-500px] rounded  w-full  transition-all ease-linear duration-500">
+					<li class="py-2 px-5 capitalize  ml-2 md:ml-0"><a class="rounded hover:shadow hover:shadow-slate-500 px-1 py-2 duration-200" href="{% url 'home' %}">home</a></li>
+					<li class="py-2 px-5 capitalize  ml-2 md:ml-0"><a class="rounded hover:shadow hover:shadow-slate-500 px-1 py-2 duration-200" href="{% url 'signup' %}">signup</a></li>
+					{% if request.user.is_authenticated %}
+					<li class="py-2 px-5 capitalize  ml-2 md:ml-0"><a class="rounded hover:shadow hover:shadow-slate-500 px-1 py-2 duration-200" href="{% url 'logout' %}">logout</a></li>
+					<li class="py-2 px-5 capitalize  ml-2 md:ml-0"><a class=" border bg-green-500 rounded px-1 py-2 duration-200 text-xl" href="">Hi,{{request.user}}</a></li>
+					{% else %}
+					<li class="py-2 px-5 capitalize  ml-2 md:ml-0"><a class="rounded hover:shadow hover:shadow-slate-500 px-1 py-2 duration-200" href="{% url 'login' %}">login</a></li>
+					<li class="py-2 px-5 capitalize  ml-2 md:ml-0"><a class="rounded hover:shadow hover:shadow-slate-500 px-1 py-2 duration-200" href="">About</a></li>
+					{% endif %}
+					
+				</ul>
+			</div>
+		</nav>
+
+	{% block content %} {% endblock content %}
+
+	<footer>
+		<div class="flex items-end justify-start bg-gray-200 text-red-700 p-1 mt-44">
+			Developed by Dr.developer All right reserved
+		</div>
+	</footer>
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+	
+	</body>
+</html>
